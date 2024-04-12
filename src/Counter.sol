@@ -2,7 +2,7 @@
 pragma solidity ^0.8.13;
 
 contract Counter {
-    uint256 public number;
+    uint256 public number = 0;
 
     function setNumber(uint256 newNumber) public {
         number = newNumber;
@@ -10,5 +10,22 @@ contract Counter {
 
     function increment() public {
         number++;
+    }
+
+    // TODO
+    function callIncrement() external {
+        increment();
+    }
+
+    /// TODO
+    function incrementByTwoMagic() external {
+        // TODO
+        number += 2;
+    }
+
+    uint256 public constant TWO = 2;
+
+    function incrementByTwoConstant() external {
+        number += TWO;
     }
 }
