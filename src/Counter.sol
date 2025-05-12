@@ -23,7 +23,6 @@ contract Counter {
         number += 2;
     }
 
-    uint256 public constant TWO = 2;
 
     function incrementByTwoConstant() external {
         number += TWO;
