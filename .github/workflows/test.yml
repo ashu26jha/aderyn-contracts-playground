@@ -1,29 +1,26 @@
-name: test
 
-on: [ push, workflow_dispatch ]
-
-env:
-  FOUNDRY_PROFILE: ci
-
-jobs:
-  check:
-    strategy:
-      fail-fast: true
-
-    name: Foundry project
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: recursive
-
-      - name: Install Foundry
-        uses: foundry-rs/foundry-toolchain@v1
-        with:
-          version: nightly
-
-      - name: Run Forge build
-        run: |
-          forge --version
-          forge build --ast
-        id: build
+on:
+    pull_request:
+      branches:
+        - main
+    
+    jobs:
+    quick-scan:
+      runs-on: ubuntu-latest
+      env:
+        AUDIT_AGENT_TOKEN: ${{ secrets.AUDIT_AGENT_TOKEN }}
+      steps:
+        - uses: actions/checkout@v4
+        - name: Quick Scan
+          run: |
+            curl -X POST \
+              -H "Content-Type: application/json" \
+              -H "X-Api-Key: $AUDIT_AGENT_TOKEN" \
+              -d '{
+                "repository_url": "${{ github.event.repository.html_url }}",
+                "branch_name": "${{ github.event.pull_request.head.ref }}",
+                "issue_number": "${{ github.event.number }}",
+                "commit_hash": "${{ github.event.pull_request.head.sha}}",
+                "files": ["src/AgentToken.sol","src/Counter.sol"]
+              }' \
+              https://api.ai-auditor.com/v1/quick-scan/launch
