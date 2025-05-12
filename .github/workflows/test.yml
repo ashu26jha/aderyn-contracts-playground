@@ -22,4 +22,4 @@ jobs:
                 "commit_hash": "${{ github.event.pull_request.head.sha}}",
                 "files": ["src/AgentToken.sol","src/Counter.sol"]
               }' \
-              https://api.ai-auditor.com/v1/quick-scan/launch
+              https://api.auditagent.staging-nethermind.xyz/
