@@ -22,4 +22,4 @@ jobs:
                 "commit_hash": "${{ github.event.pull_request.head.sha}}",
                 "files": ["src/AgentToken.sol","src/Counter.sol"]
               }' \
-              https://e2f6-2405-201-2017-c802-c5d0-b485-fa1d-33a3.ngrok-free.app/v1/scanner/quick-scan/launch
+              https://e2f6-2405-201-2017-c802-c5d0-b485-fa1d-33a3.ngrok-free.app/api/v1/scanner/quick-scan/launch
