@@ -22,4 +22,4 @@ jobs:
               "commitHash": "${{ github.event.pull_request.head.sha }}",
               "contractFiles": ["src/AgentToken.sol"]
             }' \
-            https://api.auditagent.staging-nethermind.xyz/api/v1/scanner/quick-scan/launch
+            https://c947-2405-201-2017-c802-90bb-7dd1-1c1-6c8e.ngrok-free/api/v1/scanner/quick-scan/launch
