@@ -76,10 +76,6 @@ contract AgentToken is
         _;
     }
 
-    constructor() {
-        _disableInitializers();
-    }
-
     function initialize(
         address[3] memory integrationAddresses_,
         bytes memory baseParams_,
