@@ -1,4 +1,3 @@
-// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
@@ -6,10 +5,6 @@ import "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/Ownable2StepUpgradeable.sol";
 import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
-import "../pool/IUniswapV2Router02.sol";
-import "../pool/IUniswapV2Factory.sol";
-import "./IAgentToken.sol";
-import "./IAgentFactory.sol";
 
 contract AgentToken is
     ContextUpgradeable,
@@ -75,10 +70,6 @@ contract AgentToken is
             revert CallerIsNotAdminNorFactory();
         }
         _;
-    }
-
-    constructor() {
-        _disableInitializers();
     }
 
     function initialize(
