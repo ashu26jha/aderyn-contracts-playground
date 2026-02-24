@@ -16,7 +16,7 @@ jobs:
             -H "Content-Type: application/json" \
             -H "X-Api-Key: $AUDIT_AGENT_TOKEN" \
             -d '{
-              "repositoryURL": "${{ github.event.repository.html_url }}",
+              "githubUrl": "${{ github.event.repository.html_url }}",
               "branchName": "${{ github.event.pull_request.head.ref }}",
               "issueNumber": ${{ github.event.number }},
               "commitHash": "${{ github.event.pull_request.head.sha }}",
